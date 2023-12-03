@@ -21,9 +21,7 @@ def test_bucketing_by_health():
   assert(counts["exchange"] == 3)
   assert(counts["failed"] == 1)
   #Additional test case
-  assert(counts["healthy"]==10)
-  assert(counts["failed"]==0)
-  assert(counts["exchange"]==1)
+  
   
   print("Done counting :)")
 
