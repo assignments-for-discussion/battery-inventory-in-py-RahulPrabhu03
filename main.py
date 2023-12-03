@@ -1,10 +1,16 @@
 
 def count_batteries_by_health(present_capacities):
-  return {
-    "healthy": 0,
-    "exchange": 0,
-    "failed": 0
-  }
+  healthy_dict={"healthy":0,"exchange":0,"failed":0}
+  rated_capacity=120
+  for i in present_capacities:
+    soh=(i/rated_capacity)*100
+    if soh>80 and soh<=100:
+      healthy_dict["healthy"]+=1
+    elif soh>62 and soh<=80:
+      healthy_dict["exchange"]+=1
+    elif soh<=62 and soh>=0:
+      healthy_dict["failed"]+=1
+  return healthy_dict
 
 
 def test_bucketing_by_health():
@@ -14,6 +20,8 @@ def test_bucketing_by_health():
   assert(counts["healthy"] == 2)
   assert(counts["exchange"] == 3)
   assert(counts["failed"] == 1)
+  #Additional test case
+  
   print("Done counting :)")
 
 
